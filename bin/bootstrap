@@ -1,10 +1,12 @@
 #!/bin/sh
-xcode-select --install
-sudo xcodebuild -license
-/usr/sbin/softwareupdate --install-rosetta
+# sudo xcodebuild -license
+# /usr/sbin/softwareupdate --install-rosetta
+# get pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
+# install ansible with pip
 sudo pip3 install --ignore-installed ansible
-ansible-galaxy install -r requirements.yml
+# ansible-galaxy install -r requirements.yml
+# dont think requirement.yml is necessary since it just has community general collection?
 
 ansible-playbook -i "localhost," -c local ansible_osx.yml --ask-become-pass
